@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>vn.cloud</groupId>
+    <artifactId>hello-service-auto-configuration</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>Hello Service</name>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <spring-boot.version>2.5.6</spring-boot.version>
+        <hello-starter.version>0.0.1-SNAPSHOT</hello-starter.version>
+        <hello-service.version>0.0.1-SNAPSHOT</hello-service.version>
+        <hello-auto-configuration.version>0.0.1-SNAPSHOT</hello-auto-configuration.version>
+    </properties>
+
+    <modules>
+        <module>hello-auto-configuration</module> <!-- hello.autoconfigure -->
+        <module>hello-starter</module>            <!-- hello.starter -->
+        <module>hello-service</module>            <!-- third.party.hello -->
+        <module>hello-app</module>                <!-- vn.cloud.hello -->
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>vn.cloud</groupId>
+                <artifactId>hello-starter</artifactId>
+                <version>${hello-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>vn.cloud</groupId>
+                <artifactId>hello-auto-configuration</artifactId>
+                <version>${hello-auto-configuration.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>vn.cloud</groupId>
+                <artifactId>hello-service</artifactId>
+                <version>${hello-service.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>
